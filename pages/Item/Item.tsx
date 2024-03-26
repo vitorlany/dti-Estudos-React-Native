@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Titulo } from './Item.styled';
+import { InfoContext } from '../../App';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 interface Product {
   id: number;
@@ -18,6 +21,8 @@ interface Product {
 
 export const Item: React.FC = () => {
   const [item, setItem] = useState<Product | null>(null);
+  const counter = useSelector((state: RootState) => state.counter);
+  const useContextInfo = useContext(InfoContext);
 
   const itemData = async () => {
     const res = await axios.get('https://fakestoreapi.com/products/1');
@@ -40,6 +45,8 @@ export const Item: React.FC = () => {
       <Text>{item.description}</Text>
       <Text>{item.category}</Text>
       <Text>{item.rating.rate}</Text>
+      <Text>Use Context: {useContextInfo}</Text>
+      <Text>Use Redux: {counter.value}</Text>
     </View>
   );
 };
