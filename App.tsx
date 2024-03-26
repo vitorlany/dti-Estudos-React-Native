@@ -11,6 +11,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    // Também é possível ser passado com useContext
     <ThemeProvider theme={CustomTheme}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Item">
