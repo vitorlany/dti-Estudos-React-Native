@@ -10,6 +10,7 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { RootState, store } from './redux/store';
 import { increment } from './redux/counterSlice';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import './ReactotronConfig';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
@@ -23,7 +24,7 @@ export default function App() {
         <Provider store={store}>
           <InfoContext.Provider value={'Passando informações em camadas'}>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="ItemReactQuery">
+              <Stack.Navigator initialRouteName="Cases">
                 <Stack.Screen name="Cases" component={Inicial} />
                 <Stack.Screen
                   name="ItemsNotShippable"
@@ -52,6 +53,10 @@ const Inicial = () => {
     <View>
       <Text>Redux: {counter.value}</Text>
       <Button title="Go to Item" onPress={() => navigation.navigate('Item')} />
+      <Button
+        title="Go to Item Query"
+        onPress={() => navigation.navigate('ItemReactQuery')}
+      />
       <Button title="Incrementar" onPress={() => dispatch(increment())} />
     </View>
   );

@@ -53,11 +53,7 @@ export const Item: React.FC = () => {
 };
 
 export const ItemReactQuery: React.FC = () => {
-  const {
-    isPending,
-    error,
-    data: item,
-  } = useQuery({
+  const { isPending, data: item } = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
       fetch('https://fakestoreapi.com/products/1').then(res => res.json()),
@@ -78,6 +74,7 @@ export const ItemReactQuery: React.FC = () => {
           <Text>{item.price}</Text>
           <Text>{item.description}</Text>
           <Text>{item.category}</Text>
+          <Text>{item.rating.rate}</Text>
         </View>
       )}
     </View>
