@@ -5,6 +5,7 @@ import { Titulo } from './Item.styled';
 import { InfoContext } from '../../App';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { useQuery } from '@tanstack/react-query';
 
 interface Product {
   id: number;
@@ -47,6 +48,38 @@ export const Item: React.FC = () => {
       <Text>{item.rating.rate}</Text>
       <Text>Use Context: {useContextInfo}</Text>
       <Text>Use Redux: {counter.value}</Text>
+    </View>
+  );
+};
+
+export const ItemReactQuery: React.FC = () => {
+  const {
+    isPending,
+    error,
+    data: item,
+  } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+      fetch('https://fakestoreapi.com/products/1').then(res => res.json()),
+  });
+
+  if (!item) {
+    return item;
+  }
+
+  return (
+    <View>
+      {isPending ? (
+        <Text>Requisição</Text>
+      ) : (
+        <View>
+          <Text>{item.id}</Text>
+          <Titulo>{item.title}</Titulo>
+          <Text>{item.price}</Text>
+          <Text>{item.description}</Text>
+          <Text>{item.category}</Text>
+        </View>
+      )}
     </View>
   );
 };
