@@ -11,6 +11,7 @@ import { RootState, store } from './redux/store';
 import { increment } from './redux/counterSlice';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './ReactotronConfig';
+import './i18n';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();

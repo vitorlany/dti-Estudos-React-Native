@@ -11,4 +11,4 @@
 - [x] [React Query / Tan Stack](https://tanstack.com/query/latest)
       Muito útil para relacionamento de chamada de APIs com a aplicação. Além de usar um useEffect que reccarrega o componente com as informações da API e cancela, caso a chamada for feita e o componente não estar em tela, manualmente como é feito hoje. Deixe com que a biblioteca cuide do trabalho.
 - [ ] [Tradução / i18n](https://www.npmjs.com/package/i18n)
-      Biblioteca para tradução de textos em json. O acima é para javascript em geral, mas possuem bibliotecas específicas para React.
+      Biblioteca para tradução de textos em json. O acima é para javascript em geral, mas possuem bibliotecas específicas para [React](https://locize.com/blog/react-i18next/).

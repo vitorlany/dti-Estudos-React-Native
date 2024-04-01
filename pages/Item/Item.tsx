@@ -6,6 +6,7 @@ import { InfoContext } from '../../App';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 
 interface Product {
   id: number;
@@ -21,6 +22,7 @@ interface Product {
 }
 
 export const Item: React.FC = () => {
+  const { t } = useTranslation();
   const [item, setItem] = useState<Product | null>(null);
   const counter = useSelector((state: RootState) => state.counter);
   const useContextInfo = useContext(InfoContext);
@@ -40,6 +42,7 @@ export const Item: React.FC = () => {
 
   return (
     <View>
+      <Text>{t('introduce')}</Text>
       <Text>{item.id}</Text>
       <Titulo>{item.title}</Titulo>
       <Text>{item.price}</Text>
@@ -53,6 +56,8 @@ export const Item: React.FC = () => {
 };
 
 export const ItemReactQuery: React.FC = () => {
+  const { t } = useTranslation();
+
   const { isPending, data: item } = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
@@ -69,6 +74,7 @@ export const ItemReactQuery: React.FC = () => {
         <Text>Requisição</Text>
       ) : (
         <View>
+          <Text>{t('introduce', { lng: 'pt' })}</Text>
           <Text>{item.id}</Text>
           <Titulo>{item.title}</Titulo>
           <Text>{item.price}</Text>
